@@ -1,0 +1,5 @@
+name = Ve Coc
+description = Provides a user interface for building a rotating banner powered by the Nivo Slider jQuery plugin.
+core = 7.x
+
+

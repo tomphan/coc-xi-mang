@@ -1,0 +1,24 @@
+<?php
+function vecoc_block_info(){
+	$blocks['vecoc'] = array(
+    'info' => t('Vẽ cọc'),
+  );
+	return $blocks;
+}
+
+function vecoc_menu(){
+	$items['vecoc'] = array(
+    'title' => 'Ban do coc',
+    'page callback' => '_vecoc',
+    'file' => 'vecoc.pages.inc',
+    'access callback' => TRUE,
+  );  
+	$items['editdulieu'] = array(
+    'title' => 'Ban do coc',
+    'page callback' => '_editdulieu',
+    'file' => 'vecoc.pages.inc',
+    'access callback' => TRUE,
+  );  //End vietbando 
+	
+	return $items;
+}

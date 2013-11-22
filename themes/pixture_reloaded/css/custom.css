@@ -1,0 +1,146 @@
+.
+#header .header-inner {
+	background: none;
+	max-width: 1024px;
+	margin: auto;
+	
+}
+#menu-bar {
+  clear: both;
+  line-height: 32px;
+  min-height: 32px;
+  padding: 0 0 2px;
+  position: relative;
+  z-index: 100;
+}
+#page {
+  background: url("../images/main-bg.gif") repeat scroll 0 0 #F6F5F3;
+  border: 1px solid #F2F1ED;
+}
+#menu-bar, #primary-menu-bar {
+   background: url("../images/back_0.gif") repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.front .region-two-66-33-first .views-row {
+  padding: 0 42px 20px;
+}
+.tieu-de {
+  background: url("../images/border-bot.png") repeat-x scroll 0 100% rgba(0, 0, 0, 0);
+
+  font-family: 'Lato',sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -2px;
+  line-height: 30px;
+  margin-bottom: 36px;
+  padding-bottom: 8px;
+  text-transform: uppercase;
+  word-spacing: 2px;
+}
+.tieu-de a {
+  color: #CC6666;
+}
+.noi-dung {
+	background: url("../images/border-bot.png") repeat-x scroll 0 100% rgba(0, 0, 0, 0);
+	margin-bottom: 18px;
+	padding-bottom: 18px;
+}
+.link a {
+	text-decoration: -moz-anchor-decoration;
+}
+.two-66-33 > .region-two-66-33-first, .two-33-66 > .region-two-33-66-second, .three-inset-right > .inset-wrapper > div.region-three-inset-right-middle, .three-inset-left > .inset-wrapper > div.region-three-inset-left-middle {
+  width: 100% !important;
+}
+.block-view-tin-tuc-va-su-kien-block-1 .anh {
+  float: left;
+  margin-right: 10px;
+}
+.block-view-tin-tuc-va-su-kien-block-1 .tieu-de{
+	display: none;
+}
+.block-view-tin-tuc-va-su-kien-block-1 {
+  border-left: 1px solid #E7E7E7;
+}
+.block-inner {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+#page-title, .block-title {
+  background: url("../images/border-bot.png") repeat-x scroll 0 100% rgba(0, 0, 0, 0);
+  color: #CC6666;
+  font-family: 'Lato',sans-serif;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  letter-spacing: -2px;
+  line-height: 30px;
+  margin-bottom: 20px !important;
+  padding: 0 0 8px !important;
+  text-transform: uppercase;
+  word-spacing: 2px;
+}
+#block-views-intro-block .view-content {
+	
+	height: 328px;
+	
+	width: 100%;
+}
+#block-views-intro-block .view-content .views-row {
+  background: url("../images/spacer-1.png") repeat-y scroll 0 0 rgba(0, 0, 0, 0.08);
+  border: 1px solid #E7E7E7;
+  border-radius: 9px;
+  float: left;
+  height: 277px;
+  margin: 0 14px;
+  padding: 37px 20px 35px;
+  position: relative;
+  width: 310px;
+}
+#header .header-inner {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+#header {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+#block-views-intro-block  .view-content .views-row .views-field-title {
+	color: #CC6666;
+	font-family: 'Lato',sans-serif;
+	font-size: 28px;
+	font-weight: 400;
+	letter-spacing: -2px;
+	line-height: 34px;
+	margin-bottom: 32px;
+	text-transform: uppercase;
+	position: relative;
+}
+#block-views-intro-block .view-content .views-row .views-field-view-node a {
+  background: none repeat scroll 0 0 #CC6666;
+  color: #FFFFFF;
+  display: inline-block;
+  font-size: 10px;
+  line-height: 20px;
+  padding: 9px 18px;
+  position: absolute;
+  text-decoration: none;
+  text-transform: uppercase;
+  top: 296px;
+}
+#block-views-intro-block  .view-content .views-row .views-field-view-node a:hover {
+  background: none repeat scroll 0 0 #5D5D5D;
+}
+#block-views-intro-block .block-inner {
+	margin: 0 !important;
+}
+#block-views-intro-block .block-content {
+	padding: 0;
+}
+#name-and-slogan , #site-name a {
+	color: #919191;
+}
+#logo {
+  display: block;
+  float: left;
+  margin: 0 82px 4px -8px;
+  overflow: hidden;
+  padding: 10px 0 0 10px;
+}
+#logo img {
+  width: 148px;
+}

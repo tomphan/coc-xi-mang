@@ -1,0 +1,57 @@
+<?php
+function digipro_block_info() {
+	$blocks['digipro_map_layer'] = array(
+		'info' => t('map layer'),
+	);
+	return $blocks;
+}
+function digipro_menu(){
+	$items['vecoc'] = array(
+    'title' => 'Ban do coc',
+    'page callback' => '_vecoc',
+    'file' => 'vecoc.pages.inc',
+    'access callback' => TRUE,
+  );  
+	$items['editdulieu'] = array(
+    'title' => 'Ban do coc',
+    'page callback' => '_editdulieu',
+    'file' => 'vecoc.pages.inc',
+    'access callback' => TRUE,
+  );  
+	
+	return $items;
+}
+function digipro_block_view($delta='') {
+	$block = array();
+	switch ($delta){
+		case 'digipro_map_layer' :
+		 $td_coc = array();
+		$results = views_get_view_result('toa_do_coc', 'page');
+		//dpm($results);
+		foreach ($results as $result){
+			$td_coc[$result->nid]['x'] = $result->field_field_coc_tc_x[0]['raw']['value'];
+			$td_coc[$result->nid]['y'] = $result->field_field_coc_tc_y[0]['raw']['value'];
+		}
+		dpm($td_coc);
+		$html='';
+		foreach ($td_coc as $t) {
+		//$html.= "<circle cx="100100" cy="100100" r="20" fill='seagreen' stroke='red' stroke-width='3'/>";
+		}
+		//echo json_encode($td_coc);
+		drupal_add_js(array('digipro' => array('td_coc' => $td_coc )),'setting');
+		drupal_add_js(drupal_get_path('module', 'digipro').'/jquery-svgpan-master/jquery-svgpan.js');
+		drupal_add_js(drupal_get_path('module', 'digipro').'/jquery.svg.package-1.4.5/jquery.svg.js');
+		drupal_add_css(drupal_get_path('module', 'digipro').'/jquery.svg.package-1.4.5/jquery.svg.css');
+		//drupal_add_js(drupal_get_path('module', 'digipro').'/vebando.js');
+		//drupal_add_js(drupal_get_path('module', 'digipro').'/d3.v2.js');
+		$block['content'] = <<< CADIC
+ <svg width="1024" height="400">
+	<g id="viewport" transform="translate(-1059635, -612017)" >
+				<circle cx="100100" cy="100100" r="20" fill="seagreen" stroke="red" stroke-width="3"/>
+	</g>
+	</svg>
+CADIC;
+		break;
+	}
+	return $block;
+}

@@ -45,7 +45,7 @@ function digipro_block_view($delta='') {
 		//drupal_add_js(drupal_get_path('module', 'digipro').'/vebando.js');
 		//drupal_add_js(drupal_get_path('module', 'digipro').'/d3.v2.js');
 		$block['content'] = <<< CADIC
- <svg width="1024" height="400">
+ <svg width="1024" height="480">
 	<g id="viewport" transform="translate(-1059635, -612017)" >
 				<circle cx="100100" cy="100100" r="20" fill="seagreen" stroke="red" stroke-width="3"/>
 	</g>

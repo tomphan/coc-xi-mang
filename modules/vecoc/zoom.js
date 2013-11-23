@@ -1,5 +1,5 @@
 
-jQuery(document).ready(function(){
+$(document).ready(function(){
 	var $section = $('#svgbasics1');
 	var $panzoom = $section.panzoom();
 	$panzoom.parent().on('mousewheel.focal', function( e ) {
@@ -12,7 +12,7 @@ jQuery(document).ready(function(){
 		});
 	});
 });
-jQuery(document).ready(function(){
+$(document).ready(function(){
 	var $section = $('#svgbasics2');
 	var $panzoom = $section.panzoom();
 	$panzoom.parent().on('mousewheel.focal', function( e ) {

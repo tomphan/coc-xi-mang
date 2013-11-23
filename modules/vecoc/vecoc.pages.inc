@@ -3,9 +3,7 @@ function _vecoc(){
 	
 	//$rows = views_get_view_result('toa_do_coc');
 	$file = 'sites/all/modules/vecoc/coc.json';
-	//dpm(json_decode(file_get_contents($file)));
 	$rows = json_decode(file_get_contents($file));
-	dpm($rows[0]);
 	drupal_add_js('sites/all/modules/vecoc/jquery.js');
 	drupal_add_js('sites/all/modules/vecoc/jquery.panzoom.js');
 	drupal_add_js('sites/all/modules/vecoc/addLine.js');
@@ -13,10 +11,15 @@ function _vecoc(){
 	drupal_add_js('sites/all/modules/vecoc/vecoc.js');
 	drupal_add_js('sites/all/modules/vecoc/catcoc.js');
 	drupal_add_js('sites/all/modules/vecoc/searchcoc.js');
+	drupal_add_js('sites/all/modules/vecoc/checkEmpty.js');
 	drupal_add_js('sites/all/modules/vecoc/jquery.msgBox.js');
 	drupal_add_css('sites/all/modules/vecoc/msgBoxLight.css');
-
+	drupal_add_js('sites/all/modules/vecoc/zoom.js');
+	drupal_add_js('sites/all/modules/vecoc/d3.js');
 	$html = <<< HTML
+	<style type="text/css">
+		
+	</style>
 	<div id="timkiem">
 		<div id="olvm-title-div" name="olvm-title-div" style="float:left; position:relative; margin:4px 5px 0px 0px; font-weight:bold;">Tìm kiếm:</div>
 		<div id="olvm-title-div" name="olvm-title-div" style="float:left; position:relative; margin:0px 10px 0px 0px;">
@@ -25,7 +28,15 @@ function _vecoc(){
 			<input type="button" id="olvm-search-btn" name="olvm-search-btn" value="Tìm kiếm" class="form-submit">
 		</div>
 	</div>
-
+	<div id="luachon" style="float:left;">
+		<select>
+			<option value="1">Chọn đường thẳng</option>
+			<option value="2">Chọn đường ngang</option>
+			<option value="3">Chọn 2 điểm</option>
+			<option value="4" selected="selected">--None--</option>
+		</select>
+		<input type="submit" value="Chọn"/>
+	</div>
 HTML;
 	$html .= '<div id="vecoc"style="border: 1px solid;height:850px;width:1100px;"><div id="svgbasics1" class="hasSVG" ></div></div>';
 	$html .="<div><h3>Cắt cọc</h3></div>";
@@ -52,11 +63,12 @@ MANG;
 	}
 	$s .= <<<MANG
 	
+	var diemdau = Object();
+	var diemcuoi = Object();
 	
-	$(document).ready(function($){
+	$(document).ready(function(){
 		//var newTrons = sapxep(trons);
 		//delete(trons);
-		console.log("2-------------");
 		var html5 = drawInitial(trons);
 		//var html5 = drawInitial(newTrons);
 		
@@ -65,7 +77,78 @@ MANG;
 		//var html2 = drawInitial2(newTrons);
 	
 		$("#svgbasics2").html(html2);
-		
+		$('circle').hover(function(){
+			$(this).css('cursor','pointer');
+			
+		});
+		$('circle').click(function(){
+			
+			//alert($(this).attr('class'));
+			var coc = $(this).attr('class');
+			var x = $(this).attr('cx');
+			var y = $(this).attr('cy');
+			//alert(coc+"cx:"+x+"cy:"+y);
+			if(isEmpty(diemdau)){
+				jQuery.msgBox({
+					title :"Thông số cọc",
+					content:"Tên cọc :" + trons[coc].tencoc + "<br />Toạ độ X :"+trons[coc].cx+"<br />Toạ độ Y :"+trons[coc].cy,
+					type:"confirm",
+					buttons : [{ value: "Đặt điểm A" }, { value: "Cancel"}],
+					success: function(result){
+						if(result == "Đặt điểm A"){
+							diemdau.coc = coc;
+							diemdau.tencoc = trons[coc].tencoc;
+							diemdau.cx = x;
+							diemdau.cy = y;
+						}
+					}
+				});
+			}else{
+				jQuery.msgBox({
+					title :"Thông số cọc",
+					content:"Tên cọc :" + trons[coc].tencoc + "<br />Toạ độ X :"+trons[coc].cx+"<br />Toạ độ Y :"+trons[coc].cy,
+					type:"confirm",
+					buttons : [{ value: "Đặt điểm B" }, { value: "Cancel"}],
+					success: function(result){
+						if(result == "Đặt điểm B"){
+							diemcuoi.coc = coc;
+							diemcuoi.tencoc = trons[coc].tencoc;
+							diemcuoi.cx = x;
+							diemcuoi.cy = y;
+							//var diem = addLine(trons[diemdau.coc],trons[diemcuoi.coc],trons);
+							var html = "";
+							/*
+							for(var i =0;i< diem.length-1 ; i++){
+								
+								html += '<line x1="';
+								html += trons[i].cx ;
+								html +='" y1="';
+								html += trons[i].cy ;
+								html +='" x2="';
+								html += trons[i+1].cx;
+								html +='" y2="';
+								html += trons[i].cy ;
+								html +='" stroke="red" stroke-width="1" ></line>';
+							}
+							*/
+							html += '<line x1="';
+							html += diemdau.cx ;
+							html +='" y1="';
+							html += diemdau.cy ;
+							html +='" x2="';
+							html += diemcuoi.cx;
+							html +='" y2="';
+							html += diemcuoi.cy ;
+							html +='" stroke="red" stroke-width="1" ></line>';
+							
+							d3.select("#svgbasics1 svg").append("line").attr("x1", diemdau.cx).attr("y1", diemdau.cy).attr("x2", diemcuoi.cx).attr("y2", diemcuoi.cy).style("stroke", "rgb(6,120,155)");
+						
+						}
+					}
+				});
+			}
+			
+		});
 	});
 	
 MANG;
@@ -74,7 +157,7 @@ MANG;
 		$s
 EEE
 		, 'inline');
-	drupal_add_js('sites/all/modules/vecoc/zoom.js');
+	
 	return $html;
 }
 

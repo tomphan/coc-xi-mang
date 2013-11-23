@@ -32,7 +32,7 @@ function digipro_block_view($delta='') {
 			$td_coc[$result->nid]['x'] = $result->field_field_coc_tc_x[0]['raw']['value'];
 			$td_coc[$result->nid]['y'] = $result->field_field_coc_tc_y[0]['raw']['value'];
 		}
-		dpm($td_coc);
+		//dpm($td_coc);
 		$html='';
 		foreach ($td_coc as $t) {
 		//$html.= "<circle cx="100100" cy="100100" r="20" fill='seagreen' stroke='red' stroke-width='3'/>";

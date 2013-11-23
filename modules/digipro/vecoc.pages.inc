@@ -1,20 +1,20 @@
 <?php
 function _vecoc(){
-	
+	$path = drupal_get_path('module', 'digipro');
 	//$rows = views_get_view_result('toa_do_coc');
-	$file = 'sites/coc-xi-mang/modules/digipro/vecoc/coc.json';
+	$file = $path.'/vecoc/coc.json';
 	//dpm(json_decode(file_get_contents($file)));
 	$rows = json_decode(file_get_contents($file));
-	dpm($rows[0]);
-	drupal_add_js('sites/coc-xi-mang/modules/digipro/vecoc/jquery.js');
-	drupal_add_js('sites/coc-xi-mang/modules/digipro/vecoc/jquery.panzoom.js');
-	drupal_add_js('sites/coc-xi-mang/modules/digipro/vecoc/addLine.js');
-	drupal_add_js('sites/coc-xi-mang/modules/digipro/vecoc/sapxep.js');
-	drupal_add_js('sites/coc-xi-mang/modules/digipro/vecoc/vecoc.js');
-	drupal_add_js('sites/coc-xi-mang/modules/digipro/vecoc/catcoc.js');
-	drupal_add_js('sites/coc-xi-mang/modules/digipro/vecoc/searchcoc.js');
-	drupal_add_js('sites/coc-xi-mang/modules/digipro/vecoc/jquery.msgBox.js');
-	drupal_add_css('sites/coc-xi-mang/modules/digipro/vecoc/msgBoxLight.css');
+	//dpm($rows[0]);
+	drupal_add_js($path.'/vecoc/jquery.js');
+	drupal_add_js($path.'/vecoc/jquery.panzoom.js');
+	drupal_add_js($path.'/vecoc/addLine.js');
+	drupal_add_js($path.'/vecoc/sapxep.js');
+	drupal_add_js($path.'/vecoc/vecoc.js');
+	drupal_add_js($path.'/vecoc/catcoc.js');
+	drupal_add_js($path.'/vecoc/searchcoc.js');
+	drupal_add_js($path.'/vecoc/jquery.msgBox.js');
+	drupal_add_css($path.'/vecoc/msgBoxLight.css');
 
 	$html = <<< HTML
 	<div id="timkiem">
@@ -74,17 +74,6 @@ MANG;
 		$s
 EEE
 		, 'inline');
-	drupal_add_js('sites/all/modules/vecoc/zoom.js');
+	drupal_add_js($path.'/vecoc/zoom.js');
 	return $html;
-}
-
-
-function _datalogger_node_save_field($nid, $type, $field, $value) {
-  $n = new stdClass();
-  $n->nid = $nid;
-  $n->type = $type;
-  $n->{$field}[LANGUAGE_NONE][0]['value'] = $value;
-  field_attach_presave('node', $n);
-  field_attach_update('node', $n);
-  node_load($nid, NULL, TRUE);      // reset
 }

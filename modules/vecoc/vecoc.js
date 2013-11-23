@@ -2,26 +2,28 @@ function drawInitial(trons) {
 	var html ="";
 	html +='<svg version="1.1" class="svg" >';	
 	for(var i = 0;i<trons.length; i++){	
-		html +='<circle cx="';
+		html +='<circle class="';
+		html += i;
+		html += '" cx="';
 		html += (trons[i].cx - 1059790)*1;
 		html +='"cy="';
 		html += (trons[i].cy - 612460)*7;
 		html +='" r="4" fill="white" stroke="blue" stroke-width="1"></circle>';
 	}
+	//html += '<line x1="40" y1="224" x2="50" y2="280" stroke="red" stroke-width="1"></line>';
+	//var diem = addLine(trons[0],trons[597],trons);
 	
-	var diem = addLine(trons[0],trons[30],trons);
-	
-	console.log(diem[0]+"---------------------1111");
+	//alert(diem.length);
 	/*
 	for(var i =0;i< diem.length-1 ; i++){
 		html += '<line x1="';
-		html += diem[i].cx - 1059500;
+		html += (trons[i].cx - 1059790)*1;
 		html +='" y1="';
-		html += diem[i].cy - 612000;
+		html += (trons[i].cy - 612460)*7;
 		html +='" x2="';
-		html += diem[i+1].cx - 1059600;
+		html += (trons[i+1].cx - 1059790)*1;
 		html +='" y2="';
-		html += diem[i+1].cy - 612000;
+		html += (trons[i+1].cy - 612460)*7;
 		html +='" stroke="red" stroke-width="1" ></line>';
 	}
 	*/
@@ -29,7 +31,11 @@ function drawInitial(trons) {
 	
 	return html;
 }
-
+/*
 $(document).ready(function(){
-	$('circle').css("cursor","default");
+	$('circle').click(function(){
+		alert('ok');
+	});
 });
+
+*/
